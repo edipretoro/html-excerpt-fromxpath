@@ -2,6 +2,9 @@ package HTML::Excerpt::FromXPath;
 
 use warnings;
 use strict;
+use LWP::UserAgent;
+use Carp;
+use HTML::TreeBuilder::XPath;
 
 =head1 NAME
 
