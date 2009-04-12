@@ -44,7 +44,15 @@ Scrape HTML with XPath and store this excerpt
 
 sub new {
     my $class = shift;
-    my $self = {};
+    my %args = @_;
+    
+    my $ua = LWP::UserAgent->new();
+    my $agent = exists $args{agent} ? $args{agent} : "html-excerpt-fromxpath/$VERSION";
+    $ua->agent($agent);
+    
+    my $self = {
+        ua => $ua,
+    };
     
     bless $self, $class;
 
