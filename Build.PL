@@ -9,6 +9,9 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/HTML/Excerpt/FromXPath.pm',
     build_requires => {
         'Test::More' => 0,
+        'Carp' => 0,
+        'LWP::UserAgent' => 0,
+        'HTML::TreeBuilder::XPath' => 0,
     },
     add_to_cleanup      => [ 'HTML-Excerpt-FromXPath-*' ],
     create_makefile_pl => 'traditional',
