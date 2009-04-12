@@ -15,6 +15,6 @@ die "$0 only handle URI from Wikipedia websites\n"
 
 my $page = $parser->scrape(
     url   => $uri,
-    xpath => '//'
+    xpath => '//div[@id="content"]'
 );
 
