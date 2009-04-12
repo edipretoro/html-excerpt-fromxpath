@@ -40,6 +40,12 @@ Scrape HTML with XPath and store this excerpt
 =cut
 
 sub new {
+    my $class = shift;
+    my $self = {};
+    
+    bless $self, $class;
+
+    return $self;
 }
 
 =head2 scrape
