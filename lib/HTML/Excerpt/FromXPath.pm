@@ -64,6 +64,22 @@ sub new {
 =cut
 
 sub scrape {
+    my ($self, %args) = @_;
+
+    croak "Missing url parameter" unless exists $args{url};
+    my $xpath = $args{xpath} || '//';
+    
+    my $response = $self->{ua}->get($args{url});
+    
+    if ($response->is_success) {
+        my $tree = HTML::TreeBuilder::XPath->new_from_content($response->content);
+        
+        my $excerpt = $tree->findvalue($xpath);
+        return $excerpt;
+    } else {
+        croak $response->error;
+        return;
+    }
 }
 
 =head1 AUTHOR
