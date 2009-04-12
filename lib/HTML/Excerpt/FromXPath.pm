@@ -6,6 +6,13 @@ use LWP::UserAgent;
 use Carp;
 use HTML::TreeBuilder::XPath;
 
+use vars qw( @ISA @EXPORT @EXPORT_OK );
+
+use Exporter;
+@ISA = qw( Exporter );
+@EXPORT = (); # no export by default
+@EXPORT_OK = qw( scrape ); # only scrape can be exported
+
 =head1 NAME
 
 HTML::Excerpt::FromXPath - Select a part of a HTML file with an XPath expression and store it
