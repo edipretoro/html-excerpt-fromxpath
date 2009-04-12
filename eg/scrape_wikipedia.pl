@@ -18,3 +18,5 @@ my $page = $scraper->scrape(
     xpath => '//div[@id="content"]'
 );
 
+print $page->as_HTML . "\n";
+
