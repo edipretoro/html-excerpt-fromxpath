@@ -81,7 +81,7 @@ sub scrape {
     if ($response->is_success) {
         my $tree = HTML::TreeBuilder::XPath->new_from_content($response->content);
         
-        my $excerpt = $tree->findvalue($xpath);
+        my $excerpt = $tree->findnodes($xpath);
         return $excerpt;
     } else {
         croak $response->error;
