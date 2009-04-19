@@ -74,7 +74,7 @@ sub scrape {
     my ($self, %args) = @_;
 
     croak "Missing url parameter" unless exists $args{url};
-    my $xpath = $args{xpath} || '//';
+    my $xpath = $args{xpath} || '//html';
     
     my $response = $self->{ua}->get($args{url});
     
