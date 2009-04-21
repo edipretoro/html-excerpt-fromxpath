@@ -84,7 +84,7 @@ sub scrape {
         my $excerpt = $tree->findnodes($xpath);
         return $excerpt;
     } else {
-        croak $response->error;
+        croak $response->status_line;
         return;
     }
 }
