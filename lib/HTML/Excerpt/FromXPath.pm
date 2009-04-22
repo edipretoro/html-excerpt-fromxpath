@@ -4,7 +4,9 @@ use warnings;
 use strict;
 use LWP::UserAgent;
 use Carp;
+use Encode;
 use HTML::TreeBuilder::XPath;
+use HTML::Response::Encoding;
 
 use vars qw( @ISA @EXPORT @EXPORT_OK );
 
@@ -79,7 +81,15 @@ sub scrape {
     my $response = $self->{ua}->get($args{url});
     
     if ($response->is_success) {
-        my $tree = HTML::TreeBuilder::XPath->new_from_content($response->content);
+        my $content;
+        
+        if ($response->encoding) {
+            $content = decode( $response->encoding, $response->content );
+        } else {
+            $content = $response->content;
+        }
+
+        my $tree = HTML::TreeBuilder::XPath->new_from_content( $content );
         
         my $excerpt = $tree->findnodes($xpath);
         return $excerpt;
