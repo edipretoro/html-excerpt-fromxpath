@@ -6,7 +6,7 @@ use LWP::UserAgent;
 use Carp;
 use Encode;
 use HTML::TreeBuilder::XPath;
-use HTML::Response::Encoding;
+use HTTP::Response::Encoding;
 
 use vars qw( @ISA @EXPORT @EXPORT_OK );
 
